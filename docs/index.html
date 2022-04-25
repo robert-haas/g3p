@@ -290,6 +290,9 @@
   redraw(gwape, width-imageSize-x, y, dt);
 
   window.setInterval(function(){
+    if (i==6) {
+      i = 0;
+    }
     if (i%2){
       xi = width-imageSize-x;
     } else {
@@ -307,9 +310,6 @@
         break;
     }
     i += 1;
-    if (i == 2) {
-      i = 0;
-    }
   }, dt+1800);
 
 
