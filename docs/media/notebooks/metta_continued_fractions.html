@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>metta_arithmetics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>metta_continued_fraction</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14579,7 +14579,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Evolve-arithmetic-expressions-in-MeTTa-code-for-OpenCog-Hyperon">Evolve arithmetic expressions in MeTTa code for OpenCog Hyperon<a class="anchor-link" href="#Evolve-arithmetic-expressions-in-MeTTa-code-for-OpenCog-Hyperon">&#182;</a></h1><p>This notebook is an example of finding an arithmetic expression that evaluates to a given number. It evolves a simple MeTTa program that can be evaluated with the current experimental version of OpenCog Hyperon.</p>
+<h1 id="Continued-fraction-in-MeTTa-code-for-OpenCog-Hyperon">Continued fraction in MeTTa code for OpenCog Hyperon<a class="anchor-link" href="#Continued-fraction-in-MeTTa-code-for-OpenCog-Hyperon">&#182;</a></h1><p>This notebook is an example of finding an arithmetic expression that evaluates to a given number. In this case, the arithmetic expression shall take the form of a continued fraction such as <code>1 / (4 + 1 / (4 +...))</code> and evaluate to Euler's number e. The code evolves a simple MeTTa program that can be evaluated with the current experimental version of OpenCog Hyperon.</p>
 <p>References</p>
 <ul>
 <li><a href="https://wiki.opencog.org/w/Hyperon">OpenCog wiki: Hyperon</a></li>
@@ -14597,7 +14597,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">alogos</span> <span class="k">as</span> <span class="nn">al</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">e</span>
+
+<span class="kn">import</span> <span class="nn">alogos</span> <span class="k">as</span> <span class="nn">al</span>
+<span class="kn">import</span> <span class="nn">unified_map</span> <span class="k">as</span> <span class="nn">um</span>
 <span class="kn">from</span> <span class="nn">hyperon.common</span> <span class="kn">import</span> <span class="n">MeTTa</span>
 
 <span class="n">metta</span> <span class="o">=</span> <span class="n">MeTTa</span><span class="p">()</span>
@@ -14620,7 +14623,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14629,43 +14632,16 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebnf_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">EXPR = CONST | &quot;(&quot; OP &quot; &quot; EXPR &quot; &quot; EXPR &quot;)&quot;</span>
-<span class="s2">OP = &quot;+&quot; | &quot;-&quot; | &quot;*&quot;</span>
+<span class="s2">FRAC = &quot;(+ &quot; CONST &quot; (/ &quot; CONST &quot; &quot; FRAC &quot;))&quot; | CONST</span>
 <span class="s2">CONST = &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot;</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">grammar</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">Grammar</span><span class="p">(</span><span class="n">ebnf_text</span><span class="o">=</span><span class="n">ebnf_text</span><span class="p">)</span>
-<span class="n">grammar</span><span class="o">.</span><span class="n">generate_string</span><span class="p">()</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;5&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -14688,14 +14664,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">target_number</span> <span class="o">=</span> <span class="mi">10427</span>
-
-<span class="k">def</span> <span class="nf">objective_function</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">objective_function</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># prevent too long expressions</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">metta</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
     <span class="n">number</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
-    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">number</span><span class="o">-</span><span class="n">target_number</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">number</span><span class="o">-</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14746,7 +14720,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>(* 8 2)
+<pre>(+ 2 (/ 3 4))
 </pre>
 </div>
 </div>
@@ -14786,7 +14760,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[16]
+<pre>[2.75]
 </pre>
 </div>
 </div>
@@ -14827,7 +14801,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>10411</pre>
+<pre>0.03171817154095491</pre>
 </div>
 
 </div>
@@ -14856,12 +14830,14 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_gen</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">num_ind</span> <span class="o">=</span> <span class="mi">20</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_gen</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">num_ind</span> <span class="o">=</span> <span class="mi">300</span>
 
 <span class="n">ea</span> <span class="o">=</span> <span class="n">al</span><span class="o">.</span><span class="n">EvolutionaryAlgorithm</span><span class="p">(</span>
     <span class="n">grammar</span><span class="p">,</span> <span class="n">objective_function</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">max_or_min_fitness</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_generations</span><span class="o">=</span><span class="n">num_gen</span><span class="p">,</span> <span class="n">population_size</span><span class="o">=</span><span class="n">num_ind</span><span class="p">,</span> <span class="n">offspring_size</span><span class="o">=</span><span class="n">num_ind</span><span class="p">)</span>
+    <span class="n">max_or_min_fitness</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_generations</span><span class="o">=</span><span class="n">num_gen</span><span class="p">,</span> <span class="n">population_size</span><span class="o">=</span><span class="n">num_ind</span><span class="p">,</span> <span class="n">offspring_size</span><span class="o">=</span><span class="n">num_ind</span><span class="p">,</span>
+    <span class="n">evaluator</span><span class="o">=</span><span class="n">um</span><span class="o">.</span><span class="n">univariate</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">futures</span>
+<span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14912,13 +14888,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Progress         Generations      Evaluations      Runtime (sec)    Best fitness    
-..... .....      10               195              5.2              61.0
-..... .....      20               393              11.0             5.0
-..... .....      30               592              16.3             1.0
-..... .....      40               787              21.4             1.0
-..
+..... .....      10               2934             6.1              0.0003331105103270282
+..... .....      20               5804             9.7              1.7536305070287028e-06
+..... .....      30               8688             13.5             1.9152178953874e-08
+..... .....      40               11598            17.7             3.915531454623533e-09
+..... .....      50               14481            22.7             3.8033132199188913e-10
+..... .....      60               17398            29.7             1.4483969579259792e-11
+..... .....      70               20280            36.4             1.4483969579259792e-11
+..... .....      80               23171            43.6             1.0049738818906917e-12
+..... .....      90               26093            52.8             1.0049738818906917e-12
+..... .....      100              28999            61.6             1.0049738818906917e-12
 
-Finished         42               827              22.9             0.0             
+
+Finished         100              28999            62.5             1.0049738818906917e-12
 </pre>
 </div>
 </div>
@@ -14970,7 +14952,7 @@ Finished         42               827              22.9             0.0
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>(+ (- (- (+ (* 3 (- (* (+ 8 5) 6) 8)) (- (+ (+ (* 7 (+ 7 (* 8 (- 7 5)))) 9) (* 5 5)) (- 2 1))) (- (+ (- (- (+ (* (- (+ (* 5 8) (* 8 2)) 5) 4) (- (- 3 5) 7)) 8) (- (- 8 3) (- (- 9 (+ (* 9 8) 5)) 4))) (- (- 7 5) (- (* 5 8) 7))) (+ (- (+ 4 (+ 1 1)) (+ 5 (* (* 2 3) 9))) (* (- 4 (+ (* (+ (- 4 1) 1) 6) (+ (+ 6 8) 6))) (* 6 4))))) (- (+ (* 3 9) (- (+ (- 5 (* (- 3 1) (+ 9 (+ 5 1)))) 5) 1)) (* (- 4 3) (* 1 (* 3 (* (* (+ (- (* 2 9) (- (+ (- (+ 3 4) (+ (* (+ 6 3) 7) (+ 4 3))) 6) 4)) (* 2 1)) 6) 4)))))) (+ (* (- (+ 7 (* 8 (* 2 7))) 4) (* 5 9)) (- (+ (- (* (- (+ (* 7 6) (* 3 9)) 3) (- 4 1)) 1) 8) (* 7 (+ 4 9)))))
+<pre>(+ 2 (/ 3 (+ 4 (/ 1 (+ 5 (/ 7 (+ 9 (/ 9 (+ 5 (/ 7 (+ 9 (/ 5 (+ 3 (/ 5 (+ 4 (/ 2 (+ 3 (/ 8 (+ 5 (/ 7 (+ 4 (/ 9 (+ 1 (/ 8 (+ 5 (/ 7 (+ 4 (/ 3 5))))))))))))))))))))))))))))
 </pre>
 </div>
 </div>
@@ -14987,7 +14969,8 @@ Finished         42               827              22.9             0.0
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metta</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Target:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found: &#39;</span><span class="p">,</span> <span class="n">metta</span><span class="o">.</span><span class="n">interpret</span><span class="p">(</span><span class="n">string</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -15005,15 +14988,14 @@ Finished         42               827              22.9             0.0
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[10427]</pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Target: 2.718281828459045
+Found:  2.71828182846005
+</pre>
 </div>
-
 </div>
 
 </div>
