@@ -32,87 +32,131 @@
 <header>
   <div class="navbar navbar-dark bg-dark shadow">
     <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-end">
-        <a class="navbar-brand" href="https://proposals.deepfunding.ai/collaborate/066ca519-07a4-44a9-91ab-23bc44e737df" target="_blank">
-          Proposal for Deep Funding
-          &nbsp;
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 18 18">
-  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-          </svg>
+      <nav class="nav">
+        <a class="nav-link text-light" href="https://deepfunding.ai/" target="_blank">Deep Funding</a>
+        <a class="nav-link text-light" href="https://proposals.deepfunding.ai/collaborate/066ca519-07a4-44a9-91ab-23bc44e737df" target="_blank">
+          Proposal 1: General-purpose methods
         </a>
-      </a>
+        <a class="nav-link text-light" href="https://proposals.deepfunding.ai/collaborate/0f741644-1b9b-42c0-a5c8-c5bd69085a90" target="_blank">
+          Proposal 2: Real-world application
+        </a>
+      </nav>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
+  <div class="container py-4 text-center">
+    <div class="row py-5">
       <div class="col-lg-8 col-md-8 mx-auto">
         <h1 class="fw-light">Grammar-guided genetic programming</h1>
         <p class="lead text-muted">Evolve programs in any context-free language for any quantifiable goal</p>
       </div>
     </div>
-    <div class="row py-3" style="height:180px!important;">
+    <div class="row py-4" style="height:180px!important;">
       <div id="drawingArea"></div>
     </div>
-  </section>
+  </div>
 
-  <div class="album py-4">
-    <div class="container">
-      <div class="row py-3">
-        <p class="lead text-muted">
-            This in an example gallery created with a preliminary prototype of two grammar-guided genetic programming methods:
-            <a class="text-muted" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=BA0ubm4AAAAJ&citation_for_view=BA0ubm4AAAAJ:u5HHmVD_uO8C">
-              CFG-GP
+  <div class="container py-4">
+    <div class="row py-5 justify-content-center">
+      <div class="col-md-8">
+        This website contains an example gallery created with a preliminary prototype of
+        two grammar-guided genetic programming methods:
+        <a class="text-muted text-decoration-none" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=BA0ubm4AAAAJ&citation_for_view=BA0ubm4AAAAJ:u5HHmVD_uO8C">CFG-GP</a>
+        and
+        <a class="text-muted text-decoration-none" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=KlZHzFgAAAAJ&citation_for_view=KlZHzFgAAAAJ:AvfA0Oy_GE0C">GE</a>.
+        Two proposals for Deep Funding aim to extend this prototype considerably and
+        apply it to a hard optimization problem from practice:
+        <div class="card mt-3">
+          <div class="card-header bg-dark">
+            <a class="text-light text-decoration-none" href="https://proposals.deepfunding.ai/collaborate/066ca519-07a4-44a9-91ab-23bc44e737df" target="_blank">
+              Proposal 1: Grammar-guided genetic programming
             </a>
-            and
-            <a class="text-muted" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=KlZHzFgAAAAJ&citation_for_view=KlZHzFgAAAAJ:AvfA0Oy_GE0C">
-              GE
-            </a>.
-            The plan is to also implement more recent methods, which claim to have better performance:
-            <a class="text-muted" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=KlZHzFgAAAAJ&citation_for_view=KlZHzFgAAAAJ:hFOr9nPyWt4C">
+          </div>    
+          <div class="card-body">
+            The plan is to improve the two existing methods in the prototype and additionally implement three more recent ones that claim to have better performance:
+            <a class="text-muted text-decoration-none" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=KlZHzFgAAAAJ&citation_for_view=KlZHzFgAAAAJ:hFOr9nPyWt4C">
               piGE
             </a>,
-            <a class="text-muted" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=IC4uQLcAAAAJ&citation_for_view=IC4uQLcAAAAJ:2P1L_qKh6hAC">
+            <a class="text-muted text-decoration-none" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=IC4uQLcAAAAJ&citation_for_view=IC4uQLcAAAAJ:2P1L_qKh6hAC">
               DSGE
             </a>
             and
-            <a class="text-muted" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=PMy0x0MAAAAJ&citation_for_view=PMy0x0MAAAAJ:3WNXLiBY60kC">
+            <a class="text-muted text-decoration-none" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=PMy0x0MAAAAJ&citation_for_view=PMy0x0MAAAAJ:3WNXLiBY60kC">
               WHGE
             </a>.
-            Once this is done, suitable benchmark problems will be collected according to
-            <a class="text-muted" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=gt7X8YkAAAAJ&citation_for_view=gt7X8YkAAAAJ:_FxGoFyzp5QC">
+            Once all five methods are stable, suitable benchmark problems will be collected according to
+            <a class="text-muted text-decoration-none" href="https://scholar.google.de/citations?view_op=view_citation&hl=de&user=gt7X8YkAAAAJ&citation_for_view=gt7X8YkAAAAJ:_FxGoFyzp5QC">
               guidelines
             </a>
             developed by the genetic programming community.
             This will allow to compare the methods objectively,
             analyze their sensitivity to hyperparameter settings
-            and identify the best choice of method and parameter combination for tackling different use cases,
-            which will then be provided as general-purpose service on SingularityNET.
-            Please note that some of these examples are still fairly simple toy problems, which
+            and identify the best choice of method and parameter combination for tackling different use cases.
+            All that functionality will be integrated and provided in form of an
+            open-source software package on GitHub and PyPI.
+            The most performant method will then be onboarded on the
+            <a class="text-muted text-decoration-none" href="https://singularitynet.io/">SingularityNET platform</a>
+            as general-purpose optimization service that can be used to solve
+            hard optimization problems in a wide range of domains.
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <div class="card-header bg-dark">
+            <a class="text-light text-decoration-none" href="https://proposals.deepfunding.ai/collaborate/0f741644-1b9b-42c0-a5c8-c5bd69085a90" target="_blank">
+              Proposal 2: Evolutionary search for robust trading strategies
+            </a>
+          </div> 
+          <div class="card-body">
+            The plan is to apply the best grammar-guided genetic programming method in a
+            real-world setting: evolutionary search for robust trading strategies,
+            presumably many of which can not be designed by human traders or
+            other machine-learning approaches.
+            This essentially requires the formulation of
+            1) context-free grammars to define search spaces of candidate strategies and
+            2) an objective functions to correctly evaluate the quality of candidate strategies.
+            The second task is suspected to be the main challenge, because properly
+            evaluating candidate trading strategies requires a non-trivial setup
+            of backtesting simulations together with proper statistical evaluation techniques
+            to prevent overfitting and suitable risk-adjusted performance metrics
+            to optimize the correct goal. Only if that setup is done right, the evolved
+            trading strategies will have good performance both on the training data but more
+            importantly also on future data in live markets.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    
+    <div class="row py-3 justify-content-center">
+      <div class="col">
+            If you click on an image you are redirected to a Jupyter notebook that shows prototype code and the results it produced.
+            
+            Please note that some of the prototype examples are still fairly simple toy problems, which
             shall primarily demonstrate the flexiblity of grammar-guided genetic programming to operate in various search spaces,
             such as subsets of the
-            <a class="text-muted" href="https://www.python.org">Python</a>,
-            <a class="text-muted" href="https://www.rust-lang.org/">Rust</a>,
-            <a class="text-muted" href="https://wiki.opencog.org/w/Atomese">Atomese (for OpenCog)</a>
+            <a class="text-muted text-decoration-none" href="https://www.python.org">Python</a>,
+            <a class="text-muted text-decoration-none" href="https://www.rust-lang.org/">Rust</a>,
+            <a class="text-muted text-decoration-none" href="https://wiki.opencog.org/w/Atomese">Atomese (for OpenCog)</a>
             and
-            <a class="text-muted" href="https://wiki.opencog.org/w/Hyperon:Atomese">MeTTa (for OpenCog Hyperon)</a>
+            <a class="text-muted text-decoration-none" href="https://wiki.opencog.org/w/Hyperon:Atomese">MeTTa (for OpenCog Hyperon)</a>
             language as well as user-created
-            <a class="text-muted" href="https://en.wikipedia.org/wiki/Domain-specific_language">domain-specific languages</a>.
+            <a class="text-muted text-decoration-none" href="https://en.wikipedia.org/wiki/Domain-specific_language">domain-specific languages</a>.
             Beyond such simple demonstrations, there is a long list of real-world applications
             where evolutionary algorithms have produced
-            <a class="text-muted" href="https://www.human-competitive.org/awards">human-competitive results</a>,
+            <a class="text-muted text-decoration-none" href="https://www.human-competitive.org/awards">human-competitive results</a>,
             including methods from classical genetic programming and more recent
             grammar-guided genetic programming (e.g. under the names "grammatical evolution" and
-            "structured grammatical evolution" in the list, both covered by this proposal).
-        </p>
-        <p style="margin-top:3em;">
-            If you click on an image you are redirected to a Jupyter notebook that shows prototype code and the results it produced.
-        </p>
+            "structured grammatical evolution" in the list, both covered by proposal 1).
       </div>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-
+      
+    </div>
+    
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
+        
         <div class="col">
           <div class="card bg-dark text-light shadow">
             <a href="media/notebooks/python_symbolic_regression.html" target="_blank">
@@ -222,11 +266,11 @@
 
       </div>
     </div>
-  </div>
+  
 
 </main>
 
-<footer class="text-muted py-5">
+<footer class="text-muted">
   <div class="container">
     <p><a class="text-dark" href="https://www.github.com/robert-haas">Robert Haas</a>, Vienna, April 2022</p>
   </div>
